@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Best.Route.UseCases.Routes.Update;
 
-public class UpdateRouteHandler(IAppDbContext _context) : IRequestHandler<UpdateRouteCommand, Result<RouteDTO>>
+public class UpdateRouteHandler(ICommandDbContext _context) : IRequestHandler<UpdateRouteCommand, Result<RouteDTO>>
 {
     public async Task<Result<RouteDTO>> Handle(UpdateRouteCommand request, CancellationToken cancellationToken)
     {

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Best.Route.UseCases.Routes.Create;
 
-public class CreateRouteHandler(IAppDbContext _context) : IRequestHandler<CreateRouteCommand, Result<int>>
+public class CreateRouteHandler(ICommandDbContext _context) : IRequestHandler<CreateRouteCommand, Result<int>>
 {
     public async Task<Result<int>> Handle(CreateRouteCommand request, CancellationToken cancellationToken)
     {

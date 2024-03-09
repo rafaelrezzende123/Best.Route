@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Best.Route.Infrastructure.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20240309030135_InitialMigration")]
+    [DbContext(typeof(CommandDbContext))]
+    [Migration("20240309053832_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

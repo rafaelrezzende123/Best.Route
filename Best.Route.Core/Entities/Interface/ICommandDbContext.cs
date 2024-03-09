@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Best.Route.Core.Entities.Interface
 {
-    public interface IAppDbContext
+    public interface ICommandDbContext
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
         DbSet<Route> Routes { get; set; }

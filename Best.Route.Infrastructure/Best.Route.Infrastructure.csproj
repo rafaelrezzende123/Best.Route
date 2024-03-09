@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Best.Route.UseCases\Best.Route.UseCases.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

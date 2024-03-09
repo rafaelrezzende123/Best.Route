@@ -27,7 +27,8 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 });
 
 string? connectionString = builder.Configuration.GetConnectionString("SqliteConnection");
-builder.Services.AddApplicationDbContext(connectionString);
+builder.Services.AddCommandDbContext(connectionString);
+builder.Services.AddReadDbContext(connectionString);
 
 var app = builder.Build();
 

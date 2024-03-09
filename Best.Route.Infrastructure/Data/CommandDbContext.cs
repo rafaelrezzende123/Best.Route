@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Best.Route.Infrastructure.Data;
-public class AppDbContext : DbContext, IAppDbContext
+public class CommandDbContext : DbContext, ICommandDbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : base(dbContextOptions) { }
+    public CommandDbContext(DbContextOptions<CommandDbContext> dbContextOptions) : base(dbContextOptions) { }
     public DbSet<Core.Entities.Route> Routes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

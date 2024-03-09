@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Best.Route.UseCases.Routes.List;
 
-public class ListRoutesHandler(IAppDbContext _context) : IRequestHandler<ListRoutesQuery, Result<IEnumerable<RouteDTO>>>
+public class ListRoutesHandler(IReadDbContext _context) : IRequestHandler<ListRoutesQuery, Result<IEnumerable<RouteDTO>>>
 {
     public async Task<Result<IEnumerable<RouteDTO>>> Handle(ListRoutesQuery request, CancellationToken cancellationToken)
     {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Best.Route.UseCases.Routes.Delete;
 
-public class DeleteRouteHandler(IAppDbContext _context) : IRequestHandler<DeleteRouteCommand, Result<int>>
+public class DeleteRouteHandler(ICommandDbContext _context) : IRequestHandler<DeleteRouteCommand, Result<int>>
 {
     public async Task<Result<int>> Handle(DeleteRouteCommand request, CancellationToken cancellationToken)
     {

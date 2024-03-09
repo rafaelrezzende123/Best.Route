@@ -65,6 +65,7 @@ public class InfrastructureModule : Autofac.Module
 
     private void RegisterDependencies(ContainerBuilder builder)
     {
-        builder.RegisterType<AppDbContext>().As<IAppDbContext>().InstancePerLifetimeScope();
+        builder.RegisterType<CommandDbContext>().As<ICommandDbContext>().InstancePerLifetimeScope();
+        builder.RegisterType<ReadDbContext>().As<IReadDbContext>().InstancePerLifetimeScope();
     }
 }
