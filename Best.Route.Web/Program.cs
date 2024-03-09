@@ -5,7 +5,6 @@ using Best.Route.Infrastructure;
 using Best.Route.Infrastructure.Data;
 using FastEndpoints;
 using FastEndpoints.Swagger;
-using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);

@@ -5,7 +5,7 @@ namespace Best.Route.Infrastructure.Data;
 public class QueryDbContext : DbContext, IQueryDbContext
 {
     public QueryDbContext(DbContextOptions<QueryDbContext> dbContextOptions) : base(dbContextOptions) { }
-    public DbSet<Core.Entities.Route> Routes { get; set; }
+    public DbSet<Core.Entities.Route> Routes { get; }
 
 
 }

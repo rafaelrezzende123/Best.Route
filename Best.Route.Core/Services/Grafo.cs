@@ -1,62 +1,70 @@
 ﻿
+using Best.Route.Core.Entities;
+
 namespace Best.Route.Core.Services;
 
 public class Grafo
 {
-    private readonly Dictionary<string, Dictionary<string, decimal>> _vertices = new Dictionary<string, Dictionary<string, decimal>>();
+    private static readonly Dictionary<string, Dictionary<string, decimal>> _vertices = new Dictionary<string, Dictionary<string, decimal>>();
 
-    public void AdicionarVertice(string nome)
+
+    public static string Dijkstra(List<string> cities, List<Entities.Route> rotes, string origin, string destination)
     {
-        _vertices[nome] = new Dictionary<string, decimal>();
-    }
+        cities.ForEach(x => AddVertex(x));
+        rotes.ForEach(x => AddEdge(x.Origin, x.Destination, x.Value));
+        var segment = Dijkstra(origin, destination);
 
-    public void AdicionarAresta(string origem, string destino, decimal peso)
-    {
-        _vertices[origem][destino] = peso;
-    }
-
-    public List<string> Dijkstra(string origem, string destino)
-    {
-        var custos = new Dictionary<string, decimal>();
-        var predecessores = new Dictionary<string, string>();
-        var verticesNaoVisitados = new List<string>();
-
-        foreach (var vertice in _vertices)
+        if (segment.Count > 0)
         {
-            if (vertice.Key == origem)
-                custos[vertice.Key] = 0;
-            else
-                custos[vertice.Key] = int.MaxValue;
-
-            predecessores[vertice.Key] = null;
-            verticesNaoVisitados.Add(vertice.Key);
+            var custoTotal = CalculateTotalCost(segment);
+            return $"{string.Join(" -> ", segment)} ao custo de R${custoTotal}";
         }
 
-        while (verticesNaoVisitados.Count != 0)
-        {
-            verticesNaoVisitados.Sort((x, y) => (int)custos[x] - (int)custos[y]);
-            var verticeAtual = verticesNaoVisitados.First();
-            verticesNaoVisitados.Remove(verticeAtual);
+        return "Não foi possível encontrar uma rota para os destinos fornecidos.";
+    }
 
-            if (verticeAtual == destino)
+    private static List<string> Dijkstra(string origin, string destination)
+    {
+        var costs = new Dictionary<string, decimal>();
+        var predecessors = new Dictionary<string, string>();
+        var unvisitedVertices = new List<string>();
+
+        foreach (var vertex in _vertices)
+        {
+            if (vertex.Key == origin)
+                costs[vertex.Key] = 0;
+            else
+                costs[vertex.Key] = int.MaxValue;
+
+            predecessors[vertex.Key] = null;
+            unvisitedVertices.Add(vertex.Key);
+        }
+
+        while (unvisitedVertices.Count != 0)
+        {
+            unvisitedVertices.Sort((x, y) => (int)costs[x] - (int)costs[y]);
+            var currentVertex = unvisitedVertices.First();
+            unvisitedVertices.Remove(currentVertex);
+
+            if (currentVertex == destination)
             {
-                var caminho = new List<string>();
-                while (predecessores[verticeAtual] != null)
+                var path = new List<string>();
+                while (predecessors[currentVertex] != null)
                 {
-                    caminho.Insert(0, verticeAtual);
-                    verticeAtual = predecessores[verticeAtual];
+                    path.Insert(0, currentVertex);
+                    currentVertex = predecessors[currentVertex];
                 }
-                caminho.Insert(0, origem);
-                return caminho;
+                path.Insert(0, origin);
+                return path;
             }
 
-            foreach (var vizinho in _vertices[verticeAtual])
+            foreach (var neighbor in _vertices[currentVertex])
             {
-                var custoTotal = custos[verticeAtual] + vizinho.Value;
-                if (custoTotal < custos[vizinho.Key])
+                var totalCost = costs[currentVertex] + neighbor.Value;
+                if (totalCost < costs[neighbor.Key])
                 {
-                    custos[vizinho.Key] = custoTotal;
-                    predecessores[vizinho.Key] = verticeAtual;
+                    costs[neighbor.Key] = totalCost;
+                    predecessors[neighbor.Key] = currentVertex;
                 }
             }
         }
@@ -69,6 +77,39 @@ public class Grafo
         if (_vertices.ContainsKey(origem) && _vertices[origem].ContainsKey(destino))
         {
             return _vertices[origem][destino];
+        }
+        return int.MaxValue;
+    }
+
+
+    private static decimal CalculateTotalCost(List<string> segment)
+    {
+        decimal totalCost = 0;
+        for (int i = 0; i < segment.Count - 1; i++)
+        {
+            var origin = segment[i];
+            var destination = segment[i + 1];
+            totalCost += GetEdgeWeight(origin, destination);
+        }
+        return totalCost;
+    }
+
+
+    private static void AddVertex(string name)
+    {
+        _vertices[name] = new Dictionary<string, decimal>();
+    }
+
+    private static void AddEdge(string origin, string destination, decimal peso)
+    {
+        _vertices[origin][destination] = peso;
+    }
+
+    private static decimal GetEdgeWeight(string origin, string destination)
+    {
+        if (_vertices.ContainsKey(origin) && _vertices[origin].ContainsKey(destination))
+        {
+            return _vertices[origin][destination];
         }
         return int.MaxValue;
     }
