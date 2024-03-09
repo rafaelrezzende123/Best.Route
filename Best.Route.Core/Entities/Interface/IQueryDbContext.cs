@@ -4,6 +4,7 @@ namespace Best.Route.Core.Entities.Interface
 {
     public interface IQueryDbContext
     {
-        DbSet<Route> Routes { get; }
+        Task<IEnumerable<T>> GetRows<T>(string sql);
+        Task<T> GetRow<T>(string sql);
     }
 }
