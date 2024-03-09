@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Web", "Best.Rout
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FB2F88E5-BD65-4206-86C9-3755BE5D556B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best.Route.UseCases", "Best.Route.UseCases\Best.Route.UseCases.csproj", "{2D4E2B14-D731-4D79-AC5F-FD9EA1104B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.UseCases", "Best.Route.UseCases\Best.Route.UseCases.csproj", "{2D4E2B14-D731-4D79-AC5F-FD9EA1104B22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best.Route.Core", "Best.Route.Core\Best.Route.Core.csproj", "{B25EE7A4-33CF-496C-A825-98AA8BFE5204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Core", "Best.Route.Core\Best.Route.Core.csproj", "{B25EE7A4-33CF-496C-A825-98AA8BFE5204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best.Route.Infrastructure", "Best.Route.Infrastructure\Best.Route.Infrastructure.csproj", "{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Infrastructure", "Best.Route.Infrastructure\Best.Route.Infrastructure.csproj", "{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDA4DB60-5861-49C2-A653-554438952FC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best.Route.UnitTests", "Best.Route.UnitTests\Best.Route.UnitTests.csproj", "{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,10 @@ Global
 		{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +52,7 @@ Global
 		{2D4E2B14-D731-4D79-AC5F-FD9EA1104B22} = {FB2F88E5-BD65-4206-86C9-3755BE5D556B}
 		{B25EE7A4-33CF-496C-A825-98AA8BFE5204} = {FB2F88E5-BD65-4206-86C9-3755BE5D556B}
 		{CE5AE594-0FC3-4511-A2DB-6700FFA988CE} = {FB2F88E5-BD65-4206-86C9-3755BE5D556B}
+		{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A} = {DDA4DB60-5861-49C2-A653-554438952FC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4B7D3525-EA85-458A-83E5-BC86385632EB}

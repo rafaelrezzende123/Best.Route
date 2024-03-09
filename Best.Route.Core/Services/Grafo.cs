@@ -22,7 +22,7 @@ public class Grafo
             return $"{string.Join(" -> ", segment)} ao custo de {custoTotal.ToString("C", new CultureInfo("pt-BR"))}";
         }
 
-        return "Não foi possível encontrar uma rota para os destinos fornecidos.";
+        return null;
     }
 
     private static List<string> Dijkstra(string origin, string destination)

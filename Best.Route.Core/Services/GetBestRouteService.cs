@@ -11,7 +11,7 @@ public class GetBestRouteService(IQueryDbContext _context) : IGetBestRouteServic
     {
         var rotes = await _context.GetRows<RouteResponse>(SqlRouteConstants.GetAllRoutes);
         if (rotes is null)
-            return "Não foi possível encontrar uma rota para os destinos fornecidos.";
+            return null;
 
         var cities = rotes.SelectMany(a => new[] { a.Origin, a.Destination }).Distinct().ToList();
         return Grafo.Dijkstra(cities, rotes.ToList(), origin, destination);
