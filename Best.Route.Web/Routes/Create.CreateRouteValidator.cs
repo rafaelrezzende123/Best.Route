@@ -10,14 +10,14 @@ public class CreateRouteValidator : Validator<CreateRouteRequest>
         RuleFor(x => x.Origin)
           .NotEmpty()
           .WithMessage("Origin is required.")
-          .MinimumLength(2)
-          .MaximumLength(100);
+          .MinimumLength(3)
+          .MaximumLength(3);
 
         RuleFor(x => x.Destination)
           .NotEmpty()
           .WithMessage("Origin is required.")
-          .MinimumLength(2)
-          .MaximumLength(100);
+          .MinimumLength(3)
+          .MaximumLength(3);
 
         RuleFor(x => x.Value)
            .NotNull()

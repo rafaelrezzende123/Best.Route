@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Best.Route.Infrastructure.Data;
-public class ReadDbContext : DbContext, IReadDbContext
+public class QueryDbContext : DbContext, IQueryDbContext
 {
-    public ReadDbContext(DbContextOptions<ReadDbContext> dbContextOptions) : base(dbContextOptions) { }
+    public QueryDbContext(DbContextOptions<QueryDbContext> dbContextOptions) : base(dbContextOptions) { }
     public DbSet<Core.Entities.Route> Routes { get; set; }
 
 

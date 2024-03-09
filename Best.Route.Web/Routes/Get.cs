@@ -6,7 +6,7 @@ using Best.Route.UseCases.Result;
 
 namespace Best.Route.Web.RouteEndpoints;
 
-public class Get(IMediator _mediator) : Endpoint<GetRouteRequest, RouteRecord>
+public class Get(IMediator _mediator) : Endpoint<GetRouteRequest, string>
 {
     public override void Configure()
     {
@@ -16,7 +16,7 @@ public class Get(IMediator _mediator) : Endpoint<GetRouteRequest, RouteRecord>
 
     public override async Task HandleAsync(GetRouteRequest request, CancellationToken cancellationToken)
     {
-        var command = new GetRouteQuery(request.RouteId);
+        var command = new GetRouteQuery(request.Origin, request.Destination);
 
         var result = await _mediator.Send(command);
 
@@ -28,7 +28,7 @@ public class Get(IMediator _mediator) : Endpoint<GetRouteRequest, RouteRecord>
 
         if (result.IsSuccess)
         {
-            Response = new RouteRecord(result.Value.Id, result.Value.Origin, result.Value.Destination, result.Value.Value);
+            Response = result.Value;
         }
     }
 }

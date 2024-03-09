@@ -14,6 +14,5 @@ public class CreateRouteHandler(ICommandDbContext _context) : IRequestHandler<Cr
         await _context.SaveChangesAsync();
 
         return Result<int>.Success(entity.Id);
-
     }
 }

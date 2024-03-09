@@ -9,7 +9,7 @@ public class DeleteRouteHandler(ICommandDbContext _context) : IRequestHandler<De
 {
     public async Task<Result<int>> Handle(DeleteRouteCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _context.Routes.Where(a => a.Id == request.RouteId).FirstOrDefaultAsync();
+        var entity = await _context.Routes.FirstOrDefaultAsync(a => a.Id == request.RouteId);
 
         if (entity == null)
             return Result<int>.NotFound();

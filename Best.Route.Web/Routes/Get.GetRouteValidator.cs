@@ -10,6 +10,16 @@ public class GetRouteValidator : Validator<GetRouteRequest>
 {
     public GetRouteValidator()
     {
-        RuleFor(x => x.RouteId).GreaterThan(0);
+        RuleFor(x => x.Origin)
+              .NotEmpty()
+              .WithMessage("Origin is required.")
+              .MinimumLength(3)
+              .MaximumLength(3);
+
+        RuleFor(x => x.Destination)
+              .NotEmpty()
+              .WithMessage("Origin is required.")
+              .MinimumLength(3)
+              .MaximumLength(3);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Best.Route.Core.Entities.Interface;
 using Best.Route.UseCases.Result;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 
 
@@ -10,7 +11,7 @@ public class UpdateRouteHandler(ICommandDbContext _context) : IRequestHandler<Up
 {
     public async Task<Result<RouteDTO>> Handle(UpdateRouteCommand request, CancellationToken cancellationToken)
     {
-        var entity = _context.Routes.FirstOrDefault(a => a.Id == request.RouteId);
+        var entity = await _context.Routes.FirstOrDefaultAsync(a => a.Id == request.RouteId);
         if (entity == null)
             return Result<RouteDTO>.NotFound();
 

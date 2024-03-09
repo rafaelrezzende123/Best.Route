@@ -1,18 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Best.Route.Infrastructure.Data;
 
 public static class AppDbContextExtensions
 {
-    public static void AddCommandDbContext(this IServiceCollection services, string connectionString)
+
+    public static void AddCommandDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<CommandDbContext>(options => options.UseSqlite(connectionString));
+        var commandDbConnection = configuration.GetConnectionString("CommandSqlConnection");
+        services.AddDbContext<CommandDbContext>(options => options.UseSqlite(commandDbConnection));
     }
 
 
-    public static void AddReadDbContext(this IServiceCollection services, string connectionString)
+    public static void AddQueryDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ReadDbContext>(options => options.UseSqlite(connectionString));
+        var queryDbConnection = configuration.GetConnectionString("QuerySqlConnection");
+        services.AddDbContext<QueryDbContext>(options => options.UseSqlite(queryDbConnection));
     }
 }

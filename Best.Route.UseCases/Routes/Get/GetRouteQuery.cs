@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Best.Route.UseCases.Routes.Get;
 
-public record GetRouteQuery(int RouteId) : IRequest<Result<RouteDTO>>; 
+public record GetRouteQuery(string Origin, string Destination) : IRequest<Result<string>>;

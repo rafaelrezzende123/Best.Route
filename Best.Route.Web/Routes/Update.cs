@@ -26,22 +26,10 @@ public class Update(IMediator _mediator) : Endpoint<UpdateRouteRequest, UpdateRo
             return;
         }
 
-        var query = new GetRouteQuery(request.RouteId);
+        var dto = result.Value;
+        Response = new UpdateRouteResponse(new RouteRecord(dto.Id, dto.Origin, dto.Destination, dto.Value));
+        return;
 
-        var queryResult = await _mediator.Send(query);
-
-        if (queryResult.Status == ResultStatus.NotFound)
-        {
-            await SendNotFoundAsync(cancellationToken);
-            return;
-        }
-
-        if (queryResult.IsSuccess)
-        {
-            var dto = queryResult.Value;
-            Response = new UpdateRouteResponse(new RouteRecord(dto.Id, dto.Origin, dto.Destination, dto.Value));
-            return;
-        }
     }
 }
 

@@ -2,7 +2,7 @@
 
 namespace Best.Route.Core.Entities.Interface
 {
-    public interface IReadDbContext
+    public interface IQueryDbContext
     {
         DbSet<Route> Routes { get; set; }
     }
