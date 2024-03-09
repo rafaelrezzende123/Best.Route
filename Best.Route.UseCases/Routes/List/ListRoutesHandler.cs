@@ -1,5 +1,5 @@
 ﻿using Best.Route.Core.Entities.Interface;
-using Best.Route.Core.Entities.Query;
+using Best.Route.Core.Entities.Query.Routes;
 using Best.Route.UseCases.Result;
 using MediatR;
 
@@ -10,9 +10,7 @@ public class ListRoutesHandler(IQueryDbContext _context) : IRequestHandler<ListR
 {
     public async Task<Result<IEnumerable<RouteDTO>>> Handle(ListRoutesQuery request, CancellationToken cancellationToken)
     {
-        string sql = @"select Id, Origin, Destination, Value from Routes";
-
-        var result = await _context.GetRows<RoutesResponse>(sql);
+        var result = await _context.GetRows<RouteResponse>(SqlRouteConstants.GetAllRoutes);
         if (result is null || !result.Any())
             return Result<IEnumerable<RouteDTO>>.NotFound();
 

@@ -1,8 +1,6 @@
-﻿
+﻿namespace Best.Route.Core.Entities.Query.Routes;
 
-namespace Best.Route.Core.Entities.Query;
-
-public class RoutesResponse
+public class RouteResponse
 {
     public int Id { get; set; }
     public string Origin { get; set; }

@@ -1,6 +1,6 @@
 ﻿
 using Best.Route.Core.Entities;
-using Best.Route.Core.Entities.Query;
+using Best.Route.Core.Entities.Query.Routes;
 
 namespace Best.Route.Core.Services;
 
@@ -9,7 +9,7 @@ public class Grafo
     private static readonly Dictionary<string, Dictionary<string, decimal>> _vertices = new Dictionary<string, Dictionary<string, decimal>>();
 
 
-    public static string Dijkstra(List<string> cities, List<RoutesResponse> rotes, string origin, string destination)
+    public static string Dijkstra(List<string> cities, List<RouteResponse> rotes, string origin, string destination)
     {
         cities.ForEach(x => AddVertex(x));
         rotes.ForEach(x => AddEdge(x.Origin, x.Destination, x.Value));

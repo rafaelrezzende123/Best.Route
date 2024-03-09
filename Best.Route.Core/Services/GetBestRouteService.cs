@@ -1,5 +1,5 @@
 ﻿using Best.Route.Core.Entities.Interface;
-using Best.Route.Core.Entities.Query;
+using Best.Route.Core.Entities.Query.Routes;
 using Best.Route.Core.Interfaces;
 
 
@@ -9,8 +9,7 @@ public class GetBestRouteService(IQueryDbContext _context) : IGetBestRouteServic
 {
     public async Task<string> GetBestRoute(string origin, string destination)
     {
-        string sql = @"select Id, Origin, Destination, Value from Routes";
-        var rotes = await _context.GetRows<RoutesResponse>(sql);
+        var rotes = await _context.GetRows<RouteResponse>(SqlRouteConstants.GetAllRoutes);
         if (rotes is null)
             return "Não foi possível encontrar uma rota para os destinos fornecidos.";
 
