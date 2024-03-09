@@ -1,6 +1,7 @@
 ﻿
 using Best.Route.Core.Entities;
 using Best.Route.Core.Entities.Query.Routes;
+using System.Globalization;
 
 namespace Best.Route.Core.Services;
 
@@ -18,7 +19,7 @@ public class Grafo
         if (segment.Count > 0)
         {
             var custoTotal = CalculateTotalCost(segment);
-            return $"{string.Join(" -> ", segment)} ao custo de R${custoTotal}";
+            return $"{string.Join(" -> ", segment)} ao custo de {custoTotal.ToString("C", new CultureInfo("pt-BR"))}";
         }
 
         return "Não foi possível encontrar uma rota para os destinos fornecidos.";
