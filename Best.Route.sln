@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Web", "Best.Route.Web\Best.Route.Web.csproj", "{4D2D34EC-795C-450A-B76F-BDFA85C008E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Web", "src\Best.Route.Web\Best.Route.Web.csproj", "{4D2D34EC-795C-450A-B76F-BDFA85C008E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FB2F88E5-BD65-4206-86C9-3755BE5D556B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.UseCases", "Best.Route.UseCases\Best.Route.UseCases.csproj", "{2D4E2B14-D731-4D79-AC5F-FD9EA1104B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.UseCases", "src\Best.Route.UseCases\Best.Route.UseCases.csproj", "{2D4E2B14-D731-4D79-AC5F-FD9EA1104B22}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Core", "Best.Route.Core\Best.Route.Core.csproj", "{B25EE7A4-33CF-496C-A825-98AA8BFE5204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Core", "src\Best.Route.Core\Best.Route.Core.csproj", "{B25EE7A4-33CF-496C-A825-98AA8BFE5204}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Infrastructure", "Best.Route.Infrastructure\Best.Route.Infrastructure.csproj", "{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Best.Route.Infrastructure", "src\Best.Route.Infrastructure\Best.Route.Infrastructure.csproj", "{CE5AE594-0FC3-4511-A2DB-6700FFA988CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDA4DB60-5861-49C2-A653-554438952FC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best.Route.UnitTests", "Best.Route.UnitTests\Best.Route.UnitTests.csproj", "{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best.Route.UnitTests", "tests\Best.Route.UnitTests\Best.Route.UnitTests.csproj", "{C0495F23-E6C9-47B5-B9D8-FB62F3D9179A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,9 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Best.Route.Core\Best.Route.Core.csproj" />
-    <ProjectReference Include="..\Best.Route.UseCases\Best.Route.UseCases.csproj" />
+    <ProjectReference Include="..\..\src\Best.Route.Core\Best.Route.Core.csproj" />
+    <ProjectReference Include="..\..\src\Best.Route.UseCases\Best.Route.UseCases.csproj" />
   </ItemGroup>
+
 
   <ItemGroup>
     <Using Include="Xunit" />

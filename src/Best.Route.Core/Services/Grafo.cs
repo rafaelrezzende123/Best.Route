@@ -1,6 +1,4 @@
-﻿
-using Best.Route.Core.Entities;
-using Best.Route.Core.Entities.Query.Routes;
+﻿using Best.Route.Core.Entities.Query.Routes;
 using System.Globalization;
 
 namespace Best.Route.Core.Services;
@@ -10,10 +8,14 @@ public class Grafo
     private static readonly Dictionary<string, Dictionary<string, decimal>> _vertices = new Dictionary<string, Dictionary<string, decimal>>();
 
 
-    public static string Dijkstra(List<string> cities, List<RouteResponse> rotes, string origin, string destination)
+    public static string? Dijkstra(IEnumerable<string> cities, IEnumerable<RouteResponse> rotes, string origin, string destination)
     {
-        cities.ForEach(x => AddVertex(x));
-        rotes.ForEach(x => AddEdge(x.Origin, x.Destination, x.Value));
+        cities.ToList()
+              .ForEach(x => AddVertex(x));
+
+        rotes.ToList()
+             .ForEach(x => AddEdge(x.Origin, x.Destination, x.Value));
+
         var segment = Dijkstra(origin, destination);
 
         if (segment.Count > 0)
@@ -28,7 +30,7 @@ public class Grafo
     private static List<string> Dijkstra(string origin, string destination)
     {
         var costs = new Dictionary<string, decimal>();
-        var predecessors = new Dictionary<string, string>();
+        var predecessors = new Dictionary<string, string?>();
         var unvisitedVertices = new List<string>();
 
         foreach (var vertex in _vertices)
@@ -45,7 +47,7 @@ public class Grafo
         while (unvisitedVertices.Count != 0)
         {
             unvisitedVertices.Sort((x, y) => (int)costs[x] - (int)costs[y]);
-            var currentVertex = unvisitedVertices.First();
+            string currentVertex = unvisitedVertices.First();
             unvisitedVertices.Remove(currentVertex);
 
             if (currentVertex == destination)
@@ -72,15 +74,6 @@ public class Grafo
         }
 
         return new List<string>();
-    }
-
-    public decimal GetPesoAresta(string origem, string destino)
-    {
-        if (_vertices.ContainsKey(origem) && _vertices[origem].ContainsKey(destino))
-        {
-            return _vertices[origem][destino];
-        }
-        return int.MaxValue;
     }
 
 

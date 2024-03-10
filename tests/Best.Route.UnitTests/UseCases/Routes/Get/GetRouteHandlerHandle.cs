@@ -23,7 +23,7 @@ public class GetRouteHandlerHandle
         var route = "GRU -> BRC -> SCL -> ORL -> CDG ao custo de R$ 40,00";
         var query = new GetRouteQuery(origin, destination);
 
-        _service.GetBestRoute(origin, destination).Returns(Task.FromResult(route));
+        _service.GetBestRoute(origin, destination).Returns(Task.FromResult<string?>(route));
         
         // Act
         var result = await _handler.Handle(query, CancellationToken.None);
@@ -42,7 +42,7 @@ public class GetRouteHandlerHandle
 
         var query = new GetRouteQuery(origin, destination);
 
-        _service.GetBestRoute(origin, destination).Returns(Task.FromResult<string>(null));
+        _service.GetBestRoute(origin, destination).Returns(Task.FromResult<string?>(null));
         
         // Act
         var result = await _handler.Handle(query, CancellationToken.None);
