@@ -1,4 +1,5 @@
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Best.Route.Core;
 using Best.Route.Infrastructure;
@@ -19,6 +20,17 @@ builder.Services.SwaggerDocument(o =>
     o.ShortSchemaNames = true;
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAnyOrigin",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
     containerBuilder.RegisterModule(new CoreModule());
@@ -34,6 +46,6 @@ var app = builder.Build();
 app.UseFastEndpoints();
 app.UseSwaggerGen();
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAnyOrigin");
 app.Run();
 
